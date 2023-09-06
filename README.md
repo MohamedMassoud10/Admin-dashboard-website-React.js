@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Digital Advertising Screen Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Digital Advertising Screen Management System! This powerful tool allows authenticated site administrators to seamlessly control and manage the ads displayed on digital advertising screens.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### `✅ Comprehensive Control:`
 
-### `npm start`
+Admins have access to a wide range of capabilities to effectively manage and control the advertising content on digital screens.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `✅ List Screen Ads:`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Easily view all ads currently in circulation. This feature provides a quick overview of advertising content, helping admins stay up-to-date with ongoing campaigns.
 
-### `npm test`
+### `✅ Update Existing Screen Ads:`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Make changes to existing screen ads effortlessly. Admins can edit ad content, adjust scheduling, or update any relevant information without the need to create entirely new ads.
 
-### `npm run build`
+### `✅ Delete Existing Screen Ads:`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When ads are no longer relevant or need removal from circulation, administrators can swiftly delete them. This ensures that only the most current and pertinent content is displayed.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `✅ Create New Screen Ads:`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Introduce fresh advertising content with ease. Admins can specify ad content, schedule display times on digital screens, and configure all necessary settings for new campaigns.
 
-### `npm run eject`
+## Empowering Site Administrators
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Our system empowers site administrators to efficiently manage and control the content displayed on digital advertising screens. This level of control is crucial for ensuring that ads are delivered to the intended audience at precisely the right time.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `1.` Authentication:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Log in as an authenticated site administrator to access the system.
 
-## Learn More
+### `2.` List Ads:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Use the "List Screen Ads" feature to view the current advertising content.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `3.` Edit and Update:
 
-### Code Splitting
+Modify existing screen ads using the "Update Existing Screen Ads" feature for real-time adjustments.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### `4.` Delete Ads:
 
-### Analyzing the Bundle Size
+Remove ads from circulation when they are no longer needed with the "Delete Existing Screen Ads" feature.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### `5.` Create New Ads:
 
-### Making a Progressive Web App
+To introduce fresh advertising content, create new screen ads by specifying content, scheduling, and configurations.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## About
 
-### Advanced Configuration
+This system is built on React.js and provides a user-friendly Admin-dashboard interface for seamless management of digital advertising screens.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Contributors
 
-### Deployment
+Mohamed Massoud - Developer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for choosing our Digital Advertising Screen Management System. We're excited to help you take control of your digital advertising campaigns! If you have any questions or need assistance, please don't hesitate to reach out to our support team.
