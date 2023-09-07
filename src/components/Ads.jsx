@@ -1,16 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { deleteScreenAd } from "./../redux/screenAdSlice"; // Import the deleteScreenAd action
 
 import "./ads.css";
 
 const Ads = (props) => {
-  const dispatch = useDispatch();
-
-  const handleDeleteAd = () => {
-    dispatch(deleteScreenAd(props.id));
-  };
-
   return (
     <>
       <div className="ads-card">
@@ -25,9 +17,7 @@ const Ads = (props) => {
           </div>
         </div>
         <div className="buttons">
-          <div className="btn delete" onClick={handleDeleteAd}>
-            Delete
-          </div>
+          <div className="btn delete">Delete</div>
           <div className="btn update">Update</div>
         </div>
       </div>

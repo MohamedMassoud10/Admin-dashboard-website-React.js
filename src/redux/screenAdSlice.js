@@ -7,14 +7,6 @@ const screenAdSlice = createSlice({
     fetchScreenAds: (state, action) => {
       state.screenAds = action.payload;
     },
-    deleteScreenAd: (state, action) => {
-      const adIdToDelete = action.payload;
-      const updatedScreenAds = state.screenAds.filter(
-        (ad) => ad.id !== adIdToDelete
-      );
-      state.screenAds = updatedScreenAds;
-      console.log("removed");
-    },
   },
 });
 

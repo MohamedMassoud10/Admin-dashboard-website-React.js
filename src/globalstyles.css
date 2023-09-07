@@ -48,3 +48,18 @@ a {
     margin: auto;
   }
 }
+.btn {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+input {
+  border: none;
+  border-bottom: 1px solid #00000052;
+}
+label {
+  margin-right: 20px;
+}

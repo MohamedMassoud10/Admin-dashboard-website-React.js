@@ -1,0 +1,30 @@
+.content {
+  margin: 10px 353px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 621px;
+  padding: 0 30px;
+}
+
+.btn.submit-btn {
+  width: 76px;
+  border: none;
+  margin: 5px 0;
+}
+@media (max-width: 992px) {
+  .content {
+    margin: 10px auto;
+    height: 500px;
+  }
+}
+.content-inputs {
+  margin: 30px 0;
+}
+.IV-input {
+  display: flex;
+  align-items: center;
+}
+.IV-input input {
+  border: none !important;
+}

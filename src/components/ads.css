@@ -26,13 +26,6 @@
   justify-content: space-between;
   margin: 10px 1px;
 }
-.btn {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-}
 .btn.delete {
   background-color: #ab1515;
 }
