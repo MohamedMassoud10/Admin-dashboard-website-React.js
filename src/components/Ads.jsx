@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./ads.css";
+import { useSelector } from "react-redux";
 
 const Ads = (props) => {
   return (

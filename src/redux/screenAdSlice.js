@@ -8,7 +8,7 @@ const screenAdSlice = createSlice({
       state.screenAds = action.payload;
     },
     createScreenAd: (state, action) => {
-      console.log(action);
+      state.push(action.payload);
     },
   },
 });

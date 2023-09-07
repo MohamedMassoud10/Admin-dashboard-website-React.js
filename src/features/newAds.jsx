@@ -1,26 +1,33 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./newads.css";
 import { createScreenAd } from "../redux/screenAdSlice";
 const NewAds = () => {
+  const selector = useSelector((store) => store.ads);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [values, setValues] = useState({
     title: "",
     price: "",
     file: "",
   });
+  const [selectedFile, setSelectedFile] = useState(null);
   const handleAddAds = () => {
-    navigate("/");
     dispatch(
       createScreenAd({
-        file: values.file,
+        id: selector.length + 1,
         title: values.title,
         price: values.price,
+        image: selectedFile,
       })
     );
+    navigate("/");
+  };
+  const handelUploadImg = (e) => {
+    setSelectedFile(e.target.files[0]);
   };
   return (
     <div className="container">
@@ -35,7 +42,7 @@ const NewAds = () => {
             <input
               type="file"
               placeholder="please add the ads video or picture"
-              onChange={(e) => setValues({ ...values, file: e.target.value })}
+              onChange={handelUploadImg}
               value={values.file}
             />
           </div>

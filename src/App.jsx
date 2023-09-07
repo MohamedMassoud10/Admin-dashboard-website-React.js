@@ -3,7 +3,7 @@ import AdsCollection from "./components/AdsCollection";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import "./globalstyles.css";
-import NewAds from "./components/newAds";
+import NewAds from "./features/newAds";
 const App = () => {
   return (
     <>
