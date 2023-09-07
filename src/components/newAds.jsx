@@ -1,16 +1,26 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./newads.css";
+import { createScreenAd } from "../redux/screenAdSlice";
 const NewAds = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
-    name: "",
     title: "",
     price: "",
+    file: "",
   });
   const handleAddAds = () => {
     navigate("/");
+    dispatch(
+      createScreenAd({
+        file: values.file,
+        title: values.title,
+        price: values.price,
+      })
+    );
   };
   return (
     <div className="container">

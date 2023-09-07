@@ -7,14 +7,17 @@ const screenAdSlice = createSlice({
     fetchScreenAds: (state, action) => {
       state.screenAds = action.payload;
     },
+    createScreenAd: (state, action) => {
+      console.log(action);
+    },
   },
 });
 
 export const {
   fetchScreenAds,
-  updateScreenAd,
-  deleteScreenAd,
+  //updateScreenAd,
+  //deleteScreenAd,
   createScreenAd,
-} = screenAdSlice;
+} = screenAdSlice.actions;
 
 export default screenAdSlice.reducer;
