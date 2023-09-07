@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 0 800;
+  src: url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Quicksand:wght@300;400;500;600;700&display=swap");
+}
+/* Reset default margins and paddings for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* Enable smooth scrolling for HTML elements */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Define a style for links */
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+/* Define media queries for responsive design */
+
+/* Medium screens (min-width: 768px) */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+    margin: auto;
+  }
+}
+
+/* Large screens (min-width: 992px) */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+    margin: auto;
+  }
+}
+
+/* Extra-large screens (min-width: 1200px) */
+@media (min-width: 1200px) {
+  .container {
+    width: 1140px;
+    margin: auto;
+  }
+}
