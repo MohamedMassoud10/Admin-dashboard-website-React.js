@@ -1,0 +1,41 @@
+.ads-image {
+  height: 249px;
+  width: 77%;
+  border-radius: 6px 6px 0 0;
+  padding: 53px;
+  margin-left: 10%;
+}
+.ads-card {
+  box-shadow: 7px 20px 20px 20px #0000000d;
+  width: 300px;
+}
+.ads-card img {
+  cursor: pointer;
+}
+.ads-body {
+  padding: 9px;
+  text-align: center;
+}
+.ads-body .ads-details {
+  display: flex;
+  justify-content: space-between;
+  height: 68px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 1px;
+}
+.btn {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+.btn.delete {
+  background-color: #ab1515;
+}
+.btn.update {
+  background-color: #156aab;
+}

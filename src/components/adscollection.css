@@ -1,0 +1,20 @@
+@media (min-width: 768px) {
+  .ads-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    grid-column-gap: 40px;
+    grid-row-gap: 60px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ads-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-top: 34px;
+  }
+}
