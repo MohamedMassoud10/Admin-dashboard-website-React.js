@@ -1,14 +1,12 @@
 import React from "react";
-import Ads from "./Ads.jsx";
 import "./adscollection.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AdsList from "./AdsList.jsx";
+import EmptyPage from "../utils/EmptyPage";
 
 const AdsCollection = () => {
   const data = useSelector((store) => store.ads);
-  console.log(data);
-
   const divStyle = {
     margin: "4px 16px",
   };
@@ -20,7 +18,7 @@ const AdsCollection = () => {
           Create ADS
         </button>
       </Link>
-      <AdsList data={data} />
+      {data.length > 0 ? <AdsList data={data} /> : <EmptyPage />}
     </div>
   );
 };
