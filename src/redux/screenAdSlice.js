@@ -24,7 +24,6 @@ const screenAdSlice = createSlice({
           price,
           file,
         };
-
         return updatedState;
       }
 

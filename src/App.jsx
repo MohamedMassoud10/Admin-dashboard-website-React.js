@@ -3,8 +3,8 @@ import AdsCollection from "./components/AdsCollection";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import "./globalstyles.css";
-import NewAds from "./features/NewAds";
-import UpdateAds from "./../src/features/NewAds";
+import NewAds from "./features/newAds";
+import UpdateAds from "./features/updateAds";
 const App = () => {
   return (
     <>
@@ -12,7 +12,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<AdsCollection />}></Route>
         <Route path="/newAds" element={<NewAds />}></Route>
-        <Route path="/updateAds/:id" element={<UpdateAds />} />
+        <Route path="/updateAds/:id" element={<UpdateAds />}></Route>
       </Routes>
     </>
   );
