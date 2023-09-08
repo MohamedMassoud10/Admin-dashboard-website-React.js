@@ -29,6 +29,7 @@ const NewAds = () => {
   const handelUploadImg = (e) => {
     setSelectedFile(e.target.files[0]);
   };
+
   return (
     <div className="container">
       <div className="content">

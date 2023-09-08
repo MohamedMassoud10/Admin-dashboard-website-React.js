@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { current, createSlice } from "@reduxjs/toolkit";
 import adsData from "./../data/ads.json";
 const screenAdSlice = createSlice({
   name: "screenAds",
@@ -10,7 +10,26 @@ const screenAdSlice = createSlice({
     createScreenAd: (state, action) => {
       state.push(action.payload);
     },
-    //updateScreenAd
+    updateScreenAd: (state, action) => {
+      const { id, title, price, file } = action.payload;
+
+      // Find the index of the element with the matching id
+      const index = state.findIndex((item) => item.id === Number(id));
+
+      if (index !== -1) {
+        const updatedState = [...state];
+        updatedState[index] = {
+          ...state[index],
+          title,
+          price,
+          file,
+        };
+
+        return updatedState;
+      }
+
+      return state;
+    },
   },
 });
 

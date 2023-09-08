@@ -1,21 +1,39 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import { updateScreenAd } from "../redux/screenAdSlice";
 import "./newads.css";
 const UpdateAds = () => {
   const selector = useSelector((store) => store.ads);
   const params = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const existingAds = selector.filter((ad) => ad.id === Number(params.id));
-  console.log(existingAds);
-  const { id, title, price, file } = existingAds[0];
+  const { id, title, price, image } = existingAds[0];
+  const [selectedFile, setSelectedFile] = useState(null);
   const [values, setValues] = useState({
     id,
     title,
     price,
-    file,
+    image,
   });
+  const handleUpdateAds = () => {
+    setValues({ title: "", price: "", image: "" });
+    dispatch(
+      updateScreenAd({
+        id: params.id,
+        title: values.title,
+        price: values.price,
+        image: values.image,
+      })
+    );
+    navigate("/");
+  };
+  const handelUploadImg = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
   return (
     <div className="container">
       <div className="content">
@@ -29,7 +47,7 @@ const UpdateAds = () => {
             <input
               type="file"
               placeholder="please add the ads video or picture"
-              //onChange={handelUploadImg}
+              onChange={handelUploadImg}
               value={values.file}
             />
           </div>
@@ -54,7 +72,9 @@ const UpdateAds = () => {
             />
           </div>
         </div>
-        <button className="btn submit-btn update">edit</button>
+        <button className="btn submit-btn update" onClick={handleUpdateAds}>
+          Update
+        </button>
       </div>
     </div>
   );
