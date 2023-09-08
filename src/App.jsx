@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import "./globalstyles.css";
 import NewAds from "./features/NewAds";
-import UpdateAds from "./features/UpdateAds";
+import UpdateAds from "./../src/features/NewAds";
 const App = () => {
   return (
     <>
