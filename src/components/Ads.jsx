@@ -1,11 +1,15 @@
 import React from "react";
 
 import "./ads.css";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deleteScreenAd } from "./../redux/screenAdSlice";
 import { Link } from "react-router-dom";
 
 const Ads = (props) => {
-  const selector = useSelector((store) => store.ads);
+  const dispatch = useDispatch();
+  const handleRemoveUser = () => {
+    dispatch(deleteScreenAd({ id: props.id }));
+  };
   return (
     <>
       <div className="ads-card">
@@ -23,7 +27,9 @@ const Ads = (props) => {
           </div>
         </div>
         <div className="buttons">
-          <div className="btn delete">Delete</div>
+          <div className="btn delete" onClick={handleRemoveUser}>
+            Delete
+          </div>
           <Link to={`/updateAds/${props.id}`} className="btn update">
             Update
           </Link>

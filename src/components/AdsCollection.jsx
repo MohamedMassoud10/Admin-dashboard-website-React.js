@@ -3,11 +3,14 @@ import Ads from "./Ads.jsx";
 import "./adscollection.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 const AdsCollection = () => {
   const data = useSelector((store) => store.ads);
+
   const divStyle = {
     margin: "4px 16px",
   };
+
   return (
     <div className="container">
       <Link to="/newAds">
