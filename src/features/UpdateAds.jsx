@@ -8,8 +8,8 @@ const UpdateAds = () => {
   const params = useParams();
   console.log(params.id);
   const navigate = useNavigate();
-  const existingAds = selector.filter((ads) => ads[ads].id === params.id);
-  console.log(existingAds);
+  //const existingAds = selector.filter((ads) => ads[ads].id === params.id);
+  //console.log(existingAds);
   // const [values, setValues] = useState({
   //   title,
   //   price,
