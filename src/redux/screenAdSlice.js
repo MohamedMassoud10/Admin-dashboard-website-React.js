@@ -10,12 +10,13 @@ const screenAdSlice = createSlice({
     createScreenAd: (state, action) => {
       state.push(action.payload);
     },
+    //updateScreenAd
   },
 });
 
 export const {
   fetchScreenAds,
-  //updateScreenAd,
+  updateScreenAd,
   //deleteScreenAd,
   createScreenAd,
 } = screenAdSlice.actions;

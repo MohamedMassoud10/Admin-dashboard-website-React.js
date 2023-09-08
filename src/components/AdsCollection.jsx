@@ -2,13 +2,9 @@ import React from "react";
 import Ads from "./Ads.jsx";
 import "./adscollection.css";
 import { Link } from "react-router-dom";
-import adsData from "./../data/ads.json";
 import { useSelector } from "react-redux";
-import store from "../redux/store.js";
 const AdsCollection = () => {
   const data = useSelector((store) => store.ads);
-
-  console.log(data[0]);
   const divStyle = {
     margin: "4px 16px",
   };

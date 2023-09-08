@@ -9,7 +9,10 @@ const Ads = (props) => {
   return (
     <>
       <div className="ads-card">
-        <img src={props.img} alt="ads-image" className="ads-image" />
+        <div className="img-container">
+          <img src={props.img} alt="ads-image" className="ads-image" />
+        </div>
+
         <div className="ads-body">
           <div className="ads-details">
             <div className="title">{props.title}</div>

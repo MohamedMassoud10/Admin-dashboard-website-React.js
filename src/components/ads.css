@@ -1,5 +1,5 @@
 .ads-image {
-  height: 249px;
+  height: 100%;
   width: 77%;
   border-radius: 6px 6px 0 0;
   padding: 53px;
@@ -31,4 +31,7 @@
 }
 .btn.update {
   background-color: #156aab;
+}
+.img-container {
+  height: 249px;
 }

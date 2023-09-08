@@ -6,15 +6,16 @@ import "./newads.css";
 const UpdateAds = () => {
   const selector = useSelector((store) => store.ads);
   const params = useParams();
-  console.log(params.id);
   const navigate = useNavigate();
-  //const existingAds = selector.filter((ads) => ads[ads].id === params.id);
-  //console.log(existingAds);
-  // const [values, setValues] = useState({
-  //   title,
-  //   price,
-  //   file,
-  // });
+  const existingAds = selector.filter((ad) => ad.id === Number(params.id));
+  console.log(existingAds);
+  const { id, title, price, file } = existingAds[0];
+  const [values, setValues] = useState({
+    id,
+    title,
+    price,
+    file,
+  });
   return (
     <div className="container">
       <div className="content">
@@ -29,7 +30,7 @@ const UpdateAds = () => {
               type="file"
               placeholder="please add the ads video or picture"
               //onChange={handelUploadImg}
-              //value={values.file}
+              value={values.file}
             />
           </div>
           <br />
@@ -38,8 +39,8 @@ const UpdateAds = () => {
             <input
               type="text"
               placeholder="New Ads"
-              //onChange={(e) => setValues({ ...values, title: e.target.value })}
-              //value={values.title}
+              onChange={(e) => setValues({ ...values, title: e.target.value })}
+              value={values.title}
             />
           </div>
           <br />
@@ -48,8 +49,8 @@ const UpdateAds = () => {
             <input
               type="text"
               placeholder="type ads title . . ."
-              //onChange={(e) => setValues({ ...values, price: e.target.value })}
-              //value={values.price}
+              onChange={(e) => setValues({ ...values, price: e.target.value })}
+              value={values.price}
             />
           </div>
         </div>
