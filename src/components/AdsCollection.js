@@ -20,17 +20,18 @@ const AdsCollection = () => {
         </button>
       </Link>
       <div className="ads-list">
-        {data.map((e) => {
-          return (
-            <Ads
-              img={e.image}
-              title={e.title}
-              price={e.price}
-              id={e.id}
-              key={e.id}
-            />
-          );
-        })}
+        {data &&
+          data.map((e) => {
+            return (
+              <Ads
+                img={e.image}
+                title={e.title}
+                price={e.price}
+                id={e.id}
+                key={e.id}
+              />
+            );
+          })}
       </div>
     </div>
   );
