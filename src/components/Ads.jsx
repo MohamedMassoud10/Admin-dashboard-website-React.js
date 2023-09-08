@@ -2,8 +2,10 @@ import React from "react";
 
 import "./ads.css";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Ads = (props) => {
+  const selector = useSelector((store) => store.ads);
   return (
     <>
       <div className="ads-card">
@@ -19,7 +21,9 @@ const Ads = (props) => {
         </div>
         <div className="buttons">
           <div className="btn delete">Delete</div>
-          <div className="btn update">Update</div>
+          <Link to={`/updateAds/${props.id}`} className="btn update">
+            Update
+          </Link>
         </div>
       </div>
     </>

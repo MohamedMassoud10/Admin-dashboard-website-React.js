@@ -8,7 +8,7 @@ import store from "../redux/store.js";
 const AdsCollection = () => {
   const data = useSelector((store) => store.ads);
 
-  console.log(data);
+  console.log(data[0]);
   const divStyle = {
     margin: "4px 16px",
   };
