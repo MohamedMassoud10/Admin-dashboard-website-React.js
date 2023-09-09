@@ -1,14 +1,18 @@
-import React, { useState } from "react";
 import "./login.css";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/authSlice";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
+  console.log(isAdmin);
   const navigate = useNavigate();
-  const handleLogin = () => {
-    navigate("/");
-  };
+  const dispatch = useDispatch();
+
+  // Use useEffect to listen for changes in isAdmin and trigger navigation
 
   return (
     <div className="login-container">
@@ -32,9 +36,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
+        <button type="button">Login</button>
       </form>
     </div>
   );
