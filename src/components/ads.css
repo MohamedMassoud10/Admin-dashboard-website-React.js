@@ -1,37 +1,63 @@
+/* Define reusable variables */
+:root {
+  --primary-color: #156aab;
+  --secondary-color: #ab1515;
+  --box-shadow-color: #0000000d;
+  --border-radius: 6px;
+  --padding: 53px;
+}
+
+/* Ads Image Styles */
 .ads-image {
   height: 100%;
   width: 77%;
-  border-radius: 6px 6px 0 0;
-  padding: 53px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  padding: var(--padding);
   margin-left: 10%;
 }
+
+/* Ads Card Styles */
 .ads-card {
-  box-shadow: 7px 20px 20px 20px #0000000d;
+  box-shadow: 7px 20px 20px 20px var(--box-shadow-color);
   width: 300px;
 }
+
+/* Cursor Pointer for Images */
 .ads-card img {
   cursor: pointer;
 }
+
+/* Ads Body Styles */
 .ads-body {
   padding: 9px;
   text-align: center;
 }
+
+/* Ads Details Styles */
 .ads-body .ads-details {
   display: flex;
   justify-content: space-between;
   height: 68px;
 }
+
+/* Buttons Styles */
 .buttons {
   display: flex;
   justify-content: space-between;
   margin: 10px 1px;
 }
+
+/* Delete Button Styles */
 .btn.delete {
-  background-color: #ab1515;
+  background-color: var(--secondary-color);
 }
+
+/* Update Button Styles */
 .btn.update {
-  background-color: #156aab;
+  background-color: var(--primary-color);
 }
+
+/* Image Container Styles */
 .img-container {
   height: 249px;
 }
