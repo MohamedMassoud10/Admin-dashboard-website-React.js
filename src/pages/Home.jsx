@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "./../components/Header";
-import AdsCollection from "./../components/AdsCollection";
-import NewAds from "./../features/newAds";
-import UpdateAds from "./../features/updateAds";
+import AdsCollection from "./AdsCollection";
+import NewAds from "./newAds";
+import UpdateAds from "./updateAds";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 const Home = () => {

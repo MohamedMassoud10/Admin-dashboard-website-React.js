@@ -2,8 +2,8 @@ import React from "react";
 import "./adscollection.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import AdsList from "./AdsList.jsx";
-import EmptyPage from "../utils/EmptyPage";
+import AdsList from "../components/AdsList.jsx";
+import EmptyPage from "./EmptyPage";
 
 const AdsCollection = () => {
   const data = useSelector((store) => store.ads);
