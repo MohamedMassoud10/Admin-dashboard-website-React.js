@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Ads.css";
+import "./ads.css";
 import { useDispatch } from "react-redux";
 import { deleteScreenAd } from "./../redux/screenAdSlice";
 import { Link } from "react-router-dom";
