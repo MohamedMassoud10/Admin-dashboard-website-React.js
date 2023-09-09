@@ -1,6 +1,5 @@
 import "./login.css";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/authSlice";
 
@@ -8,12 +7,19 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const isAdmin = useSelector((state) => state.auth.isAdmin);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  console.log("isAuthenticated: ", isAuthenticated);
   console.log(isAdmin);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // Use useEffect to listen for changes in isAdmin and trigger navigation
-
+  const handelLogin = () => {
+    dispatch(
+      login({
+        username: username,
+        password: password,
+      })
+    );
+  };
   return (
     <div className="login-container">
       <h2>Login</h2>
@@ -36,7 +42,9 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="button">Login</button>
+        <button type="button" onClick={handelLogin}>
+          Login
+        </button>
       </form>
     </div>
   );

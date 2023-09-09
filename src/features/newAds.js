@@ -12,7 +12,7 @@ const NewAds = () => {
   const [values, setValues] = useState({
     title: "",
     price: "",
-    file: "",
+    file: null,
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const handleAddAds = () => {

@@ -4,23 +4,23 @@ Welcome to the Digital Advertising Screen Management System! This powerful tool 
 
 ## Features
 
-### `✅ Comprehensive Control:`
+`✅ Comprehensive Control:`
 
 Admins have access to a wide range of capabilities to effectively manage and control the advertising content on digital screens.
 
-### `✅ List Screen Ads:`
+`✅ List Screen Ads:`
 
 Easily view all ads currently in circulation. This feature provides a quick overview of advertising content, helping admins stay up-to-date with ongoing campaigns.
 
-### `✅ Update Existing Screen Ads:`
+`✅ Update Existing Screen Ads:`
 
 Make changes to existing screen ads effortlessly. Admins can edit ad content, adjust scheduling, or update any relevant information without the need to create entirely new ads.
 
-### `✅ Delete Existing Screen Ads:`
+`✅ Delete Existing Screen Ads:`
 
 When ads are no longer relevant or need removal from circulation, administrators can swiftly delete them. This ensures that only the most current and pertinent content is displayed.
 
-### `✅ Create New Screen Ads:`
+`✅ Create New Screen Ads:`
 
 Introduce fresh advertising content with ease. Admins can specify ad content, schedule display times on digital screens, and configure all necessary settings for new campaigns.
 
@@ -30,23 +30,23 @@ Our system empowers site administrators to efficiently manage and control the co
 
 ## Getting Started
 
-### `1.` Authentication:
+`1.` Authentication:
 
 Log in as an authenticated site administrator to access the system.
 
-### `2.` List Ads:
+`2.` List Ads:
 
 Use the "List Screen Ads" feature to view the current advertising content.
 
-### `3.` Edit and Update:
+`3.` Edit and Update:
 
 Modify existing screen ads using the "Update Existing Screen Ads" feature for real-time adjustments.
 
-### `4.` Delete Ads:
+`4.` Delete Ads:
 
 Remove ads from circulation when they are no longer needed with the "Delete Existing Screen Ads" feature.
 
-### `5.` Create New Ads:
+`5.` Create New Ads:
 
 To introduce fresh advertising content, create new screen ads by specifying content, scheduling, and configurations.
 
