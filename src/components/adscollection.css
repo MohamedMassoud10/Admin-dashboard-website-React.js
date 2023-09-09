@@ -25,4 +25,26 @@
   transform: translate(-50%, -50%);
   font-size: 43px;
   font-weight: 900;
+  opacity: 1;
+  animation: rotateAndFade 2s cubic-bezier(1, -0.6, 0, 1.43) infinite;
+  -webkit-animation: rotateAndFade 2s cubic-bezier(1, -0.6, 0, 1.43) infinite;
+}
+
+@keyframes rotateAndFade {
+  0% {
+    transform: translate(-50%, -50%) rotate(-8deg);
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) rotate(-8deg);
+    -moz-transform: translate(-50%, -50%) rotate(-8deg);
+    -ms-transform: translate(-50%, -50%) rotate(-8deg);
+    -o-transform: translate(-50%, -50%) rotate(-8deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(15deg);
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) rotate(15deg);
+    -moz-transform: translate(-50%, -50%) rotate(15deg);
+    -ms-transform: translate(-50%, -50%) rotate(15deg);
+    -o-transform: translate(-50%, -50%) rotate(15deg);
+  }
 }
