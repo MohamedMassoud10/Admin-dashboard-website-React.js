@@ -34,6 +34,9 @@ Our system empowers site administrators to efficiently manage and control the co
 
 Log in as an authenticated site administrator to access the system.
 
+- **Username:** admin
+- **Password:** admin
+
 `2.` List Ads:
 
 Use the "List Screen Ads" feature to view the current advertising content.
