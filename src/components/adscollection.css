@@ -1,3 +1,4 @@
+/* Media query for screens with a minimum width of 768px */
 @media (min-width: 768px) {
   .ads-list {
     display: grid;
@@ -8,6 +9,7 @@
   }
 }
 
+/* Media query for screens with a maximum width of 768px */
 @media (max-width: 768px) {
   .ads-list {
     display: flex;
@@ -18,6 +20,8 @@
     margin-top: 34px;
   }
 }
+
+/* Styles for the "empty" class */
 .empty {
   position: absolute;
   top: 50%;
@@ -34,17 +38,9 @@
   0% {
     transform: translate(-50%, -50%) rotate(-8deg);
     opacity: 1;
-    -webkit-transform: translate(-50%, -50%) rotate(-8deg);
-    -moz-transform: translate(-50%, -50%) rotate(-8deg);
-    -ms-transform: translate(-50%, -50%) rotate(-8deg);
-    -o-transform: translate(-50%, -50%) rotate(-8deg);
   }
   100% {
     transform: translate(-50%, -50%) rotate(15deg);
     opacity: 1;
-    -webkit-transform: translate(-50%, -50%) rotate(15deg);
-    -moz-transform: translate(-50%, -50%) rotate(15deg);
-    -ms-transform: translate(-50%, -50%) rotate(15deg);
-    -o-transform: translate(-50%, -50%) rotate(15deg);
   }
 }
