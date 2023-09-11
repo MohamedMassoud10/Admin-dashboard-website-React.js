@@ -1,50 +1,50 @@
 import { createSlice } from "@reduxjs/toolkit";
 import adsData from "./../data/ads.json";
+
 const screenAdSlice = createSlice({
   name: "screenAds",
-  initialState: adsData,
+  initialState: { screenAds: [] }, // Use an object to match the structure of your state
   reducers: {
     fetchScreenAds: (state, action) => {
       state.screenAds = action.payload;
     },
     createScreenAd: (state, action) => {
-      state.push(action.payload);
+      state.screenAds.push(action.payload);
+      localStorage.setItem("screenAds", JSON.stringify(state.screenAds));
     },
     updateScreenAd: (state, action) => {
       const { id, title, price, file } = action.payload;
-
-      // Find the index of the element with the matching id
-      const index = state.findIndex((item) => item.id === Number(id));
+      const index = state.screenAds.findIndex((item) => item.id === Number(id));
 
       if (index !== -1) {
-        const updatedState = [...state];
-        updatedState[index] = {
-          ...state[index],
+        state.screenAds[index] = {
+          ...state.screenAds[index],
           title,
           price,
           file,
         };
-        return updatedState;
+        // Save the updated data to local storage
+        localStorage.setItem("screenAds", JSON.stringify(state.screenAds));
       }
-
-      return state;
     },
     deleteScreenAd: (state, action) => {
       const { id } = action.payload;
 
       // Find the index of the element with the matching id
-      const index = state.findIndex((item) => item.id === Number(id));
+      const index = state.screenAds.findIndex((item) => item.id === Number(id));
 
       if (index !== -1) {
-        const updatedState = [
-          ...state.slice(0, index),
-          ...state.slice(index + 1),
-        ];
-
-        return updatedState;
+        state.screenAds.splice(index, 1); // Remove the item directly
+        localStorage.setItem("screenAds", JSON.stringify(state.screenAds));
+        localStorage.removeItem(`screenAd_${id}`);
       }
-
-      return state;
+    },
+    removeFromLocalStorage: (state, action) => {
+      const { keys } = action.payload;
+      // Remove each item from local storage
+      keys.forEach((key) => {
+        localStorage.removeItem(key);
+      });
     },
   },
 });
@@ -54,6 +54,7 @@ export const {
   updateScreenAd,
   deleteScreenAd,
   createScreenAd,
+  removeFromLocalStorage,
 } = screenAdSlice.actions;
 
 export default screenAdSlice.reducer;

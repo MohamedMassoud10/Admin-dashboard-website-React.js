@@ -5,7 +5,12 @@ import Login from "./pages/login/Login";
 import Home from "./pages/Home";
 const App = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  return <>{isAuthenticated ? <Home /> : <Login />}</>;
+  return (
+    <>
+      {" "}
+      <Home />{" "}
+    </>
+  );
 };
 
 export default App;

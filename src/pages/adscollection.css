@@ -33,6 +33,15 @@
   animation: rotateAndFade 2s cubic-bezier(1, -0.6, 0, 1.43) infinite;
   -webkit-animation: rotateAndFade 2s cubic-bezier(1, -0.6, 0, 1.43) infinite;
 }
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 43px;
+  font-weight: 900;
+  opacity: 1;
+}
 
 @keyframes rotateAndFade {
   0% {

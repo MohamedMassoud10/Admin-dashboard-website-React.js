@@ -2,13 +2,19 @@ import React from "react";
 
 import "./ads.css";
 import { useDispatch } from "react-redux";
-import { deleteScreenAd } from "./../redux/screenAdSlice";
+import {
+  deleteScreenAd,
+  removeFromLocalStorage,
+} from "./../redux/screenAdSlice";
+
 import { Link } from "react-router-dom";
 
 const Ads = (props) => {
   const dispatch = useDispatch();
   const handleRemoveUser = () => {
+    const keyToRemove = `screenAd_${props.id}`;
     dispatch(deleteScreenAd({ id: props.id }));
+    dispatch(removeFromLocalStorage({ keys: [keyToRemove] }));
   };
   return (
     <>

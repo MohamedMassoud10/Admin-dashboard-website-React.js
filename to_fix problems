@@ -1,0 +1,214 @@
+//AdsList.jsx
+// import React from "react";
+// import Ads from "./Ads.jsx";
+// import "./../pages/AdsCollection.js";
+// const AdsList = ({ data }) => {
+//   const arr = Object.keys(data).map((key) => data[key]);
+//   console.log(arr);
+//   return (
+//     <div className="ads-list">
+//       {arr.map((e) => (
+//         <Ads
+//           img={e.image}
+//           title={e.title}
+//           price={e.price}
+//           id={e.id}
+//           key={e.id}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default AdsList;
+
+//////////////////////////////////////////////////////////////////////////AdsSlice :
+import { createSlice } from "@reduxjs/toolkit";
+import produce from "immer";
+const screenAdSlice = createSlice({
+  name: "screenAds",
+  initialState: {
+    ads: [],
+  },
+  reducers: {
+    fetchScreenAds: (state, action) => {
+      return action.payload;
+    },
+    createScreenAd: (state, action) => {
+      state.push(action.payload);
+    },
+    updateScreenAd: (state, action) => {
+      const { id, title, price, file } = action.payload;
+
+      // Find the index of the element with the matching id
+      const index = state.findIndex((item) => item.id === Number(id));
+
+      if (index !== -1) {
+        const updatedState = [...state];
+        updatedState[index] = {
+          ...state[index],
+          title,
+          price,
+          file,
+        };
+        return updatedState;
+      }
+
+      return state;
+    },
+    deleteScreenAd: (state, action) => {
+      const { id } = action.payload;
+      const index = state.ads.findIndex((ad) => ad.id === id);
+
+      if (index !== -1) {
+        state.ads.splice(index, 1); // Remove the item at the found index
+      }
+
+      return state; // Return the modified state
+    },
+  },
+});
+
+export const {
+  fetchScreenAds,
+  updateScreenAd,
+  deleteScreenAd,
+  createScreenAd,
+} = screenAdSlice.actions;
+
+export default screenAdSlice.reducer;
+///////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////// update.js
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { updateScreenAd } from "../redux/screenAdSlice";
+import "./newads.css";
+const UpdateAds = () => {
+  const selector = useSelector((store) => store.ads);
+  const params = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const existingAds = selector.filter((ad) => ad.id === Number(params.id));
+  console.log(existingAds[0]);
+  const { id, title, price, image } = existingAds[0];
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [values, setValues] = useState({
+    id,
+    title,
+    price,
+    image,
+  });
+  const handleUpdateAds = () => {
+    setValues({ title: "", price: "", image: "" });
+    dispatch(
+      updateScreenAd({
+        id: params.id,
+        title: values.title,
+        price: values.price,
+        image: values.image,
+      })
+    );
+    navigate("/");
+  };
+  const handelUploadImg = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+  return (
+    <div className="container">
+      <div className="content">
+        <h1>Add new Advertisement</h1>
+        <div className="content-inputs">
+          <div className="IV-input">
+            <label>
+              picture <br />
+              or video
+            </label>
+            <input
+              type="file"
+              placeholder="please add the ads video or picture"
+              onChange={handelUploadImg}
+              value={values.file}
+            />
+          </div>
+          <br />
+          <div className="">
+            <label>ads title</label>
+            <input
+              type="text"
+              placeholder="New Ads"
+              onChange={(e) => setValues({ ...values, title: e.target.value })}
+              value={values.title}
+            />
+          </div>
+          <br />
+          <div className="">
+            <label>ads price</label>
+            <input
+              type="text"
+              placeholder="type ads title . . ."
+              onChange={(e) => setValues({ ...values, price: e.target.value })}
+              value={values.price}
+            />
+          </div>
+        </div>
+        <button className="btn submit-btn update" onClick={handleUpdateAds}>
+          Update
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default UpdateAds;
+/////
+////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////
+AdsCollection.js;
+import React, { useEffect, useState } from "react";
+import "./adscollection.css";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import AdsList from "../components/AdsList.jsx";
+import EmptyPage from "./EmptyPage";
+import { fetchScreenAds } from "../redux/screenAdSlice";
+const AdsCollection = () => {
+  const selector = useSelector((store) => store.ads);
+  const [data, setData] = useState();
+  const [loaded, setLoaded] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const apiUrl = `https://fakestoreapi.com/products`;
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        setLoaded(true);
+        dispatch(fetchScreenAds(data));
+      });
+  }, []);
+
+  const divStyle = {
+    margin: "4px 16px",
+  };
+
+  return (
+    <div className="container">
+      <Link to="/newAds">
+        <button className="btn update" style={divStyle}>
+          Create ADS
+        </button>
+      </Link>
+      {selector.length ? <AdsList data={selector} /> : <EmptyPage />}
+    </div>
+  );
+};
+
+export default AdsCollection;
+////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+/////////////////////////

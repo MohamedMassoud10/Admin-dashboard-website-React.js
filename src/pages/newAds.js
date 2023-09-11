@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { createScreenAd } from "../redux/screenAdSlice";
 import "./newads.css";
 const NewAds = () => {
-  const selector = useSelector((store) => store.ads);
+  const selector = useSelector((store) => store.ads.screenAds);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

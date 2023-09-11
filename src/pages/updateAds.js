@@ -6,7 +6,7 @@ import { useState } from "react";
 import { updateScreenAd } from "../redux/screenAdSlice";
 import "./newads.css";
 const UpdateAds = () => {
-  const selector = useSelector((store) => store.ads);
+  const selector = useSelector((store) => store.ads.screenAds);
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
