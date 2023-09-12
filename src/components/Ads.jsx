@@ -10,7 +10,6 @@ import {
 import { Link } from "react-router-dom";
 
 const Ads = (props) => {
-  console.log("reach start", props);
   const dispatch = useDispatch();
   const handleRemoveUser = () => {
     const keyToRemove = `screenAd_${props.id}`;

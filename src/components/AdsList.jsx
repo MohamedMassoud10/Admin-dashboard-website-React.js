@@ -4,7 +4,6 @@ import Ads from "./Ads.jsx";
 import "./../pages/AdsCollection.js";
 
 const AdsList = ({ data }) => {
-  console.log("data sent to ads", data);
   return (
     <div className="ads-list">
       {data.map((e) => (

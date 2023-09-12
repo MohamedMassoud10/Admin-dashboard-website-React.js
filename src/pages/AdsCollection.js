@@ -10,13 +10,11 @@ const AdsCollection = () => {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const selector = useSelector((store) => store.ads.screenAds);
-  console.log("All data: ", selector);
   useEffect(() => {
     const apiUrl = `https://ads-back.shutterstudio.io/ads`;
 
     // Check if data is already in localStorage
     const storedData = localStorage.getItem("screenAds");
-    console.log(storedData);
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       dispatch(fetchScreenAds(parsedData));
@@ -27,17 +25,13 @@ const AdsCollection = () => {
         .then((response) => response.json())
         .then((data) => {
           // Save data to localStorage
-          console.log("in then: ", data.data.result);
           localStorage.setItem("screenAds", JSON.stringify(data.data.result));
           dispatch(fetchScreenAds(data.data.result));
           setLoaded(true);
         });
     }
   }, [dispatch]);
-  useEffect(() => {
-    console.log("selector: ", selector);
-  }, [selector]);
-  console.log("data : ", selector);
+  useEffect(() => {}, [selector]);
   const divStyle = {
     margin: "4px 16px",
   };

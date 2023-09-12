@@ -7,14 +7,11 @@ const screenAdSlice = createSlice({
       state.screenAds = action.payload; // Update the state with the result array
     },
     createScreenAd: (state, action) => {
-      console.log("just created: ", action.payload);
       state.screenAds.push(action.payload);
-      console.log("pushed to: ", state.screenAds);
       localStorage.setItem("screenAds", JSON.stringify(state.screenAds));
     },
     updateScreenAd: (state, action) => {
       const { id, from_time, to_time, image } = action.payload;
-      console.log("updated: ", action.payload);
       const index = state.screenAds.findIndex((item) => item.id === Number(id));
 
       if (index !== -1) {

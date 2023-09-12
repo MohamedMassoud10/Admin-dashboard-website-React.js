@@ -14,7 +14,6 @@ const NewAds = () => {
     endTime: "",
     file: null,
   });
-  //console.log("values: ", values);
   const [selectedFile, setSelectedFile] = useState(null);
   const handleAddAds = () => {
     dispatch(
