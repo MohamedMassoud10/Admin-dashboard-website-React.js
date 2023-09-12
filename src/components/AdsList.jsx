@@ -9,6 +9,7 @@ const AdsList = ({ data }) => {
         <Ads
           id={e.id}
           img={e.image}
+          video={e.video}
           startTime={e.from_time}
           endTime={e.to_time}
           key={e.id}

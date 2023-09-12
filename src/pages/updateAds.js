@@ -1,8 +1,6 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react"; // Import useEffect
 import { updateScreenAd } from "../redux/screenAdSlice";
 import "./newads.css";
 
@@ -14,40 +12,36 @@ const UpdateAds = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [values, setValues] = useState({
     id: "",
-    title: "",
-    price: "",
-    image: "",
+    startTime: "",
+    endTime: "",
+    file: "",
   });
 
-  // Use useEffect to set initial values when selector or params.id changes
   useEffect(() => {
-    // Find the existing ad with the matching ID
     const existingAd = selector.find((ad) => ad.id === Number(params.id));
-
     if (existingAd) {
       setValues({
         id: existingAd.id,
-        title: existingAd.title,
-        price: existingAd.price,
-        image: existingAd.image,
+        startTime: existingAd.from_time,
+        endTime: existingAd.to_time,
+        file: existingAd.image,
       });
     }
   }, [selector, params.id]);
 
   const handleUpdateAds = () => {
-    setValues({ id: "", title: "", price: "", image: "" });
     dispatch(
       updateScreenAd({
         id: params.id,
-        title: values.title,
-        price: values.price,
-        image: values.image,
+        startTime: values.startTime,
+        endTime: values.endTime,
+        file: selectedFile, // Use the selected file
       })
     );
     navigate("/");
   };
 
-  const handelUploadImg = (e) => {
+  const handleUploadImg = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
@@ -63,9 +57,8 @@ const UpdateAds = () => {
             </label>
             <input
               type="file"
-              placeholder="please add the ads video or picture"
-              onChange={handelUploadImg}
-              value={values.file}
+              accept=".jpg, .jpeg, .png, .gif, .mp4"
+              onChange={handleUploadImg}
             />
           </div>
           <br />
@@ -74,8 +67,10 @@ const UpdateAds = () => {
             <input
               type="text"
               placeholder="time start . . "
-              onChange={(e) => setValues({ ...values, title: e.target.value })}
-              value={values.title}
+              onChange={(e) =>
+                setValues({ ...values, startTime: e.target.value })
+              }
+              value={values.startTime}
             />
           </div>
           <br />
@@ -84,8 +79,10 @@ const UpdateAds = () => {
             <input
               type="text"
               placeholder="end time . . ."
-              onChange={(e) => setValues({ ...values, price: e.target.value })}
-              value={values.price}
+              onChange={(e) =>
+                setValues({ ...values, endTime: e.target.value })
+              }
+              value={values.endTime}
             />
           </div>
         </div>

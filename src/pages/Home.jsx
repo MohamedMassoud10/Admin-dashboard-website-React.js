@@ -3,7 +3,7 @@ import Header from "./../components/Header";
 import AdsCollection from "./AdsCollection";
 import NewAds from "./newAds";
 import UpdateAds from "./updateAds";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const Home = () => {
   return (
