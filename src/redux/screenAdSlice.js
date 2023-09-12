@@ -1,29 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const screenAdSlice = createSlice({
   name: "screenAds",
   initialState: { screenAds: [] }, // Use an object to match the structure of your state
   reducers: {
     fetchScreenAds: (state, action) => {
-      state.screenAds = action.payload;
+      state.screenAds = action.payload; // Update the state with the result array
     },
     createScreenAd: (state, action) => {
-      state.screenAds.data.result.push(action.payload);
-      localStorage.setItem(
-        "screenAds",
-        JSON.stringify(state.screenAds.data.result)
-      );
+      console.log("just created: ", action.payload);
+      state.screenAds.push(action.payload);
+      console.log("pushed to: ", state.screenAds);
+      localStorage.setItem("screenAds", JSON.stringify(state.screenAds));
     },
     updateScreenAd: (state, action) => {
-      const { id, startTime, endTime, file } = action.payload;
+      const { id, from_time, to_time, image } = action.payload;
+      console.log("updated: ", action.payload);
       const index = state.screenAds.findIndex((item) => item.id === Number(id));
 
       if (index !== -1) {
         state.screenAds[index] = {
           ...state.screenAds[index],
-          startTime,
-          endTime,
-          file,
+          from_time,
+          to_time,
+          image,
         };
         // Save the updated data to local storage
         localStorage.setItem("screenAds", JSON.stringify(state.screenAds));

@@ -42,7 +42,7 @@ const Ads = (props) => {
             </div>
             <div className="endTime">
               <h3>End time : </h3>
-              <p>{props.endTime}</p>
+              <p>{props.to_time}</p>
             </div>
           </div>
         </div>

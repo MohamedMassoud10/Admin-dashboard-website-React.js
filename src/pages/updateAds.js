@@ -1,50 +1,48 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 import { updateScreenAd } from "../redux/screenAdSlice";
 import "./newads.css";
 
 const UpdateAds = () => {
   const selector = useSelector((store) => store.ads.screenAds);
+  console.log("selector in update", selector);
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const existingAds = selector.find((ad) => ad.id === Number(params.id)); // Use find instead of filter
+  console.log("existingAds: ", existingAds);
+
+  const { id, from_time, to_time, file } = existingAds;
   const [selectedFile, setSelectedFile] = useState(null);
   const [values, setValues] = useState({
-    id: "",
-    startTime: "",
-    endTime: "",
-    file: "",
+    id,
+    from_time,
+    to_time,
+    file,
   });
-
-  useEffect(() => {
-    const existingAd = selector.find((ad) => ad.id === Number(params.id));
-    if (existingAd) {
-      setValues({
-        id: existingAd.id,
-        startTime: existingAd.from_time,
-        endTime: existingAd.to_time,
-        file: existingAd.image,
-      });
-    }
-  }, [selector, params.id]);
+  console.log("values: ", values);
 
   const handleUpdateAds = () => {
+    console.log("HU");
+    setValues({ startTime: "", endTime: "" });
     dispatch(
       updateScreenAd({
         id: params.id,
-        startTime: values.startTime,
-        endTime: values.endTime,
-        file: selectedFile, // Use the selected file
+        from_time: values.from_time,
+        to_time: values.to_time,
+        image: values.file,
       })
     );
+    console.log("Time", values.to_time);
     navigate("/");
   };
 
   const handleUploadImg = (e) => {
     setSelectedFile(e.target.files[0]);
   };
-
   return (
     <div className="container">
       <div className="content">
@@ -57,8 +55,9 @@ const UpdateAds = () => {
             </label>
             <input
               type="file"
-              accept=".jpg, .jpeg, .png, .gif, .mp4"
+              placeholder="please add the ads video or picture"
               onChange={handleUploadImg}
+              value={values.file}
             />
           </div>
           <br />
@@ -66,23 +65,23 @@ const UpdateAds = () => {
             <label>from time</label>
             <input
               type="text"
-              placeholder="time start . . "
+              placeholder="New Ads"
               onChange={(e) =>
-                setValues({ ...values, startTime: e.target.value })
+                setValues({ ...values, from_time: e.target.value })
               }
-              value={values.startTime}
+              value={values.from_time}
             />
           </div>
           <br />
           <div className="">
-            <label>to time</label>
+            <label> to time</label>
             <input
               type="text"
-              placeholder="end time . . ."
+              placeholder="type ads title . . ."
               onChange={(e) =>
-                setValues({ ...values, endTime: e.target.value })
+                setValues({ ...values, to_time: e.target.value })
               }
-              value={values.endTime}
+              value={values.to_time}
             />
           </div>
         </div>
