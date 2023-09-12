@@ -10,17 +10,20 @@ const NewAds = () => {
   const dispatch = useDispatch();
 
   const [values, setValues] = useState({
-    title: "",
-    price: "",
+    startTime: "",
+    endTime: "",
     file: null,
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const handleAddAds = () => {
+    const newId = selector.data?.result?.length
+      ? selector.data.result.length + 1
+      : 1;
     dispatch(
       createScreenAd({
-        id: selector.length + 1,
-        title: values.title,
-        price: values.price,
+        id: newId,
+        startTime: values.startTime,
+        endTime: values.endTime,
         image: selectedFile,
       })
     );
@@ -53,8 +56,10 @@ const NewAds = () => {
             <input
               type="text"
               placeholder="New Ads"
-              onChange={(e) => setValues({ ...values, title: e.target.value })}
-              value={values.title}
+              onChange={(e) =>
+                setValues({ ...values, startTime: e.target.value })
+              }
+              value={values.startTime}
             />
           </div>
           <br />
@@ -63,8 +68,10 @@ const NewAds = () => {
             <input
               type="text"
               placeholder="type ads title . . ."
-              onChange={(e) => setValues({ ...values, price: e.target.value })}
-              value={values.price}
+              onChange={(e) =>
+                setValues({ ...values, endTime: e.target.value })
+              }
+              value={values.endTime}
             />
           </div>
         </div>

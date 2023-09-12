@@ -10,8 +10,9 @@ const AdsCollection = () => {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const selector = useSelector((store) => store.ads.screenAds);
+  console.log(selector);
   useEffect(() => {
-    const apiUrl = `https://fakestoreapi.com/products`;
+    const apiUrl = `https://ads-back.shutterstudio.io/ads`;
 
     // Check if data is already in localStorage
     const storedData = localStorage.getItem("screenAds");

@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 
 const Ads = (props) => {
+  console.log("reach start", props);
   const dispatch = useDispatch();
   const handleRemoveUser = () => {
     const keyToRemove = `screenAd_${props.id}`;
@@ -25,11 +26,8 @@ const Ads = (props) => {
 
         <div className="ads-body">
           <div className="ads-details">
-            <div className="title">{props.title}</div>
-            <div className="price">
-              {props.price}
-              {`$`}
-            </div>
+            <div className="start time">{props.startTime}</div>
+            <div className="endTime">{props.endTime}</div>
           </div>
         </div>
         <div className="buttons">

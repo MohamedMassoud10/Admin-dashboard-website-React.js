@@ -2,25 +2,40 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Import useEffect
 import { updateScreenAd } from "../redux/screenAdSlice";
 import "./newads.css";
+
 const UpdateAds = () => {
   const selector = useSelector((store) => store.ads.screenAds);
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const existingAds = selector.filter((ad) => ad.id === Number(params.id));
-  const { id, title, price, image } = existingAds[0];
   const [selectedFile, setSelectedFile] = useState(null);
   const [values, setValues] = useState({
-    id,
-    title,
-    price,
-    image,
+    id: "",
+    title: "",
+    price: "",
+    image: "",
   });
+
+  // Use useEffect to set initial values when selector or params.id changes
+  useEffect(() => {
+    // Find the existing ad with the matching ID
+    const existingAd = selector.find((ad) => ad.id === Number(params.id));
+
+    if (existingAd) {
+      setValues({
+        id: existingAd.id,
+        title: existingAd.title,
+        price: existingAd.price,
+        image: existingAd.image,
+      });
+    }
+  }, [selector, params.id]);
+
   const handleUpdateAds = () => {
-    setValues({ title: "", price: "", image: "" });
+    setValues({ id: "", title: "", price: "", image: "" });
     dispatch(
       updateScreenAd({
         id: params.id,
@@ -31,9 +46,11 @@ const UpdateAds = () => {
     );
     navigate("/");
   };
+
   const handelUploadImg = (e) => {
     setSelectedFile(e.target.files[0]);
   };
+
   return (
     <div className="container">
       <div className="content">
@@ -53,20 +70,20 @@ const UpdateAds = () => {
           </div>
           <br />
           <div className="">
-            <label>ads title</label>
+            <label>from time</label>
             <input
               type="text"
-              placeholder="New Ads"
+              placeholder="time start . . "
               onChange={(e) => setValues({ ...values, title: e.target.value })}
               value={values.title}
             />
           </div>
           <br />
           <div className="">
-            <label>ads price</label>
+            <label>to time</label>
             <input
               type="text"
-              placeholder="type ads title . . ."
+              placeholder="end time . . ."
               onChange={(e) => setValues({ ...values, price: e.target.value })}
               value={values.price}
             />

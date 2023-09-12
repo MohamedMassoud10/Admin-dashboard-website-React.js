@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import adsData from "./../data/ads.json";
 
 const screenAdSlice = createSlice({
   name: "screenAds",
@@ -9,18 +8,21 @@ const screenAdSlice = createSlice({
       state.screenAds = action.payload;
     },
     createScreenAd: (state, action) => {
-      state.screenAds.push(action.payload);
-      localStorage.setItem("screenAds", JSON.stringify(state.screenAds));
+      state.screenAds.data.result.push(action.payload);
+      localStorage.setItem(
+        "screenAds",
+        JSON.stringify(state.screenAds.data.result)
+      );
     },
     updateScreenAd: (state, action) => {
-      const { id, title, price, file } = action.payload;
+      const { id, startTime, endTime, file } = action.payload;
       const index = state.screenAds.findIndex((item) => item.id === Number(id));
 
       if (index !== -1) {
         state.screenAds[index] = {
           ...state.screenAds[index],
-          title,
-          price,
+          startTime,
+          endTime,
           file,
         };
         // Save the updated data to local storage
