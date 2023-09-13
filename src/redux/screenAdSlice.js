@@ -11,7 +11,7 @@ const screenAdSlice = createSlice({
       localStorage.setItem("screenAds", JSON.stringify(state.screenAds));
     },
     updateScreenAd: (state, action) => {
-      const { id, from_time, to_time, image } = action.payload;
+      const { id, from_time, to_time, video, image } = action.payload;
       const index = state.screenAds.findIndex((item) => item.id === Number(id));
 
       if (index !== -1) {
@@ -19,6 +19,7 @@ const screenAdSlice = createSlice({
           ...state.screenAds[index],
           from_time,
           to_time,
+          video,
           image,
         };
         // Save the updated data to local storage

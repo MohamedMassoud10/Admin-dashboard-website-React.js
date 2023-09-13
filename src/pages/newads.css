@@ -18,13 +18,3 @@
     height: 500px;
   }
 }
-.content-inputs {
-  margin: 30px 0;
-}
-.IV-input {
-  display: flex;
-  align-items: center;
-}
-.IV-input input {
-  border: none !important;
-}
