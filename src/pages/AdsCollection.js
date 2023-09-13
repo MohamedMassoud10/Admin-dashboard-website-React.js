@@ -1,48 +1,51 @@
 import React, { useEffect, useState } from "react";
-import "./adscollection.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import AdsList from "../components/AdsList.jsx";
+import AdsList from "../components/AdsList";
 import EmptyPage from "./EmptyPage";
 import { fetchScreenAds } from "../redux/screenAdSlice";
+import "./adscollection.css";
+const CreateAdsButton = () => (
+  <Link to="/newAds">
+    <button className="btn update">Create ADS</button>
+  </Link>
+);
+
+const LoadingIndicator = () => <div className="loading">Loading...</div>;
 
 const AdsCollection = () => {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const selector = useSelector((store) => store.ads.screenAds);
+
   useEffect(() => {
     const apiUrl = `https://ads-back.shutterstudio.io/ads`;
 
-    // Check if data is already in localStorage
+    const fetchAdsData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        localStorage.setItem("screenAds", JSON.stringify(data.data.result));
+        dispatch(fetchScreenAds(data.data.result));
+        setLoaded(true);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
     const storedData = localStorage.getItem("screenAds");
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       dispatch(fetchScreenAds(parsedData));
       setLoaded(true);
     } else {
-      // Fetch the data if not in localStorage
-      fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          // Save data to localStorage
-          localStorage.setItem("screenAds", JSON.stringify(data.data.result));
-          dispatch(fetchScreenAds(data.data.result));
-          setLoaded(true);
-        });
+      fetchAdsData();
     }
   }, [dispatch]);
-  useEffect(() => {}, [selector]);
-  const divStyle = {
-    margin: "4px 16px",
-  };
 
   return (
     <div className="container">
-      <Link to="/newAds">
-        <button className="btn update" style={divStyle}>
-          Create ADS
-        </button>
-      </Link>
+      <CreateAdsButton />
       {loaded ? (
         selector.length > 0 ? (
           <AdsList data={selector} />
@@ -50,7 +53,7 @@ const AdsCollection = () => {
           <EmptyPage />
         )
       ) : (
-        <div className="loading">Loading...</div>
+        <LoadingIndicator />
       )}
     </div>
   );
