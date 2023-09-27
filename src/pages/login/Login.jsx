@@ -1,57 +1,54 @@
-import "./login.css";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { login } from "../../redux/authSlice";
+import { loginSchema } from "./../../utils/validationSchemas"; // Import the schema
+import "./login.css";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
   const dispatch = useDispatch();
 
-  const handleLogin = () => {
-    dispatch(
-      login({
-        username: username,
-        password: password,
-      })
-    );
+  const customValidation = (values) => {
+    const errors = {};
+
+    if (values.username !== "admin" || values.password !== "admin") {
+      errors.username = "Invalid username or password";
+    }
+
+    return errors;
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleLogin();
-    }
+  const handleSubmit = (values) => {
+    dispatch(
+      login({
+        username: values.username,
+        password: values.password,
+      })
+    );
   };
 
   return (
     <div className="login-container">
       <h2>Login</h2>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            onKeyPress={handleKeyPress} // Detect "Enter" key press
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyPress={handleKeyPress} // Detect "Enter" key press
-          />
-        </div>
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
-      </form>
+      <Formik
+        initialValues={{ username: "", password: "" }}
+        validate={customValidation} // Use the custom validation function here
+        onSubmit={handleSubmit}
+      >
+        <Form>
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <Field type="text" id="username" name="username" />
+            <ErrorMessage name="username" component="div" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <Field type="password" id="password" name="password" />
+            <ErrorMessage name="password" component="div" />
+          </div>
+          <button type="submit">Login</button>
+        </Form>
+      </Formik>
     </div>
   );
 }

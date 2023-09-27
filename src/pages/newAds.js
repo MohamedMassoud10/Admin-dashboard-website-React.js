@@ -41,8 +41,8 @@ const NewAds = () => {
               or video
             </label>
             <input
-              type="file"
-              placeholder="please add the ads video or picture"
+              type="text"
+              placeholder="pic or video"
               onChange={handelUploadImg}
               value={values.file}
             />
